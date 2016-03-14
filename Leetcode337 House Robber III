@@ -25,3 +25,20 @@ This is a dynamic programming problem. According to the question, the opt expres
 
 Use recusive to travserse all nodes in the tree.
 */
+/**  Java solutions*/
+public class Solution {
+     public int rob(TreeNode root) {
+          return dfs(root)[0];
+     }
+     private int[] dfs(TreeNode root) {
+          int[] dp = {0, 0};
+          if(root != null) {
+               int[] left = dfs(root.left);
+               int[] right = dfs(root.right);
+               dp[1] = left[0] + right[0];
+               dp[0] = Math.max(dp[1], left[1] + right[1] + root.val);
+     }
+     return dp;
+}
+
+
